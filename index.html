@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>WinLiteJS</title>
+  </head>
+  <body>
+    <main class="desktop">
+      <section class="this-pc">
+        <div class="title-bar">
+          <div class="logo">
+            <img src="./assets/icons/explorer.png" alt="" />
+            <p>File Explorer</p>
+          </div>
+
+          <div class="title-bar-btn">
+            <i
+              class="fa-solid fa-window-minimize title-bar-btn-menu hover:bg-gray-600"
+            ></i>
+            <i
+              class="fa-solid fa-expand title-bar-btn-menu hover:bg-gray-600"
+            ></i>
+            <i
+              class="ri-close-large-line title-bar-btn-menu title-bar-close-btn hover:bg-red-600"
+            ></i>
+          </div>
+        </div>
+
+        <div class="this-pc-search-bar flex gap-5 justify-between">
+          <div class="action-btn w-[10%] flex justify-between items-center">
+            <div
+              class="hover:bg-gray-600 flex items-center justify-center h-[100%] w-[30px]"
+            >
+              <i
+                class="fa-solid fa-arrow-left hover:bg-gray-600 text-white"
+              ></i>
+            </div>
+            <div
+              class="hover:bg-gray-600 flex items-center justify-center h-[100%] w-[30px]"
+            >
+              <i
+                class="fa-solid fa-arrow-right hover:bg-gray-600 text-white"
+              ></i>
+            </div>
+
+            <div
+              class="hover:bg-gray-600 flex items-center justify-center h-[100%] w-[30px]"
+            >
+              <i
+                class="fa-solid fa-angle-down hover:bg-gray-600 text-white"
+              ></i>
+            </div>
+
+            <div
+              class="flex items-center justify-center h-[100%] w-[30px] hover:bg-gray-600"
+            >
+              <i class="fa-solid fa-arrow-up hover:bg-gray-600 text-white"></i>
+            </div>
+          </div>
+          <input
+            type="text"
+            placeholder=""
+            value="C:\Program Files (x86)\Microsoft Visual Studio"
+            class="w-[80%] text-[12px] text-white border"
+          />
+          <input
+            type="text"
+            placeholder="🔍Search"
+            class="bg-white text-[12px] w-[10%] text-white border"
+          />
+        </div>
+
+        <div class="fileexplorer">
+          <div class="fileexplorer-right"></div>
+          <div class="fileexplorer-left"></div>
+        </div>
+      </section>
+
+      <section
+        class="refresh-animation absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[200px] h-[80px] bg-red-500"
+      >
+        <p>Refreashed</p>
+      </section>
+
+      <section class="cursor-context-menu">
+        <p>View</p>
+        <p>Sort by</p>
+        <p id="refreash-btn">Refresh</p>
+        <hr />
+        <p>Paste</p>
+        <p>Paste shrotcut</p>
+        <p>Paste shrotcut</p>
+        <hr />
+        <p>New</p>
+        <hr />
+        <p>Display setting</p>
+        <p>Personalize</p>
+      </section>
+
+      <section class="connectivity-menu">
+        <div class="wifi-names">
+          <div class="wifi-name">
+            <i class="ri-home-wifi-line"></i>
+            <p>Airtel_aman_9377</p>
+          </div>
+          <div class="wifi-name">
+            <i class="ri-home-wifi-line"></i>
+            <p>jio_airfiber</p>
+          </div>
+          <div class="wifi-name">
+            <i class="ri-home-wifi-line"></i>
+            <p>xTreme_001</p>
+          </div>
+        </div>
+
+        <div class="network-menu">
+          <h1>Network & Internet setting</h1>
+          <p>Change settings, such as making a connection metered</p>
+          <div class="settings">
+            <div class="network-menu-setting">
+              <i class="fa-solid fa-wifi"></i>
+              <p>Wi-fi</p>
+            </div>
+            <div class="network-menu-setting">
+              <i class="fa-brands fa-bluetooth"></i>
+
+              <p>Bluetooth</p>
+            </div>
+            <div class="network-menu-setting">
+              <i class="fa-solid fa-volume-high"></i>
+              <p>Sound</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Desktop Icons -->
+      <section class="desktop-all-icon">
+        <div class="icon this-pc-icon">
+          <img src="assets/icons/this-pc.png" />
+          <span>This PC</span>
+        </div>
+        <div class="icon">
+          <img src="assets/icons/notes.svg" alt="Notion" />
+          <span>Notion</span>
+        </div>
+
+        <div class="icon">
+          <img src="assets/icons/terminal.png" alt="terminal" />
+          <span>terminal</span>
+        </div>
+      </section>
+
+      <!-- Taskbar -->
+      <section class="taskbar">
+        <div class="window-start-action">
+          <button class="search start-button">
+            <img src="assets/icons/start.png" alt="Start" />
+          </button>
+          <div class="search search-icon">
+            <img class="search-icon" src="./assets/icons/search.png" alt="" />
+          </div>
+          <div class="search brave">
+            <img
+              class="brave-icon"
+              src="./assets/icons/brave-logo.svg"
+              alt=""
+            />
+          </div>
+
+          <div class="search notion">
+            <img class="notion-icon" src="./assets/icons/notion.svg" alt="" />
+          </div>
+
+          <div class="search rockstar">
+            <img
+              class="rockstar-icon"
+              src="./assets/icons/Rockstar_Games_Logo.png"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div class="system-tray">
+          <div class="connectivity bg-gray-500 w-fit px-5">
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-brands fa-bluetooth"></i>
+            <i class="fa-solid fa-volume-high"></i>
+          </div>
+
+          <div class="date-time flex flex-col justify-center items-center">
+            <p>01:53</p>
+            <p>12-Jan-2025</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
