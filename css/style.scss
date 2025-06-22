@@ -52,7 +52,8 @@ html {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
-  display: flex;
+  // display: flex;
+  display: none;
   flex-direction: column;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: var(--bg-secondary);
@@ -122,6 +123,17 @@ html {
     height: 100%;
     border: none;
     background: var(--bg-secondary);
+  }
+
+  .browser-content {
+    flex: 1;
+    background: white;
+  }
+
+  .browser-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 }
 
@@ -233,6 +245,13 @@ html {
 }
 
 .window-start-menu {
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+
   position: absolute;
   bottom: 80px;
   left: 50%;
@@ -253,7 +272,7 @@ html {
   /* Search Bar */
   .search-bar {
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.4) !important;
     backdrop-filter: blur(10px);
   }
 
@@ -284,6 +303,7 @@ html {
     flex: 3;
     padding: 15px;
     overflow-y: auto;
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .section-title {

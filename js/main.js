@@ -156,6 +156,82 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     calendar();
 
+    function browserSearchInput() {
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlInput = document.querySelector('.url-input');
+            const goButton = document.querySelector('.go-btn');
+            const browserFrame = document.querySelector('.browser-frame');
+            const IFRAMe = document.querySelector('#$IFRAMe');
+
+
+
+            // Check if elements exist
+            if (!urlInput || !goButton || !browserFrame) {
+                console.error('Required elements not found!');
+                return;
+            }
+
+            function loadUrl() {
+                let url = urlInput.value.trim();
+
+                if (!url) return; // Don't load empty URLs
+
+                // Add https:// if missing
+                if (!/^https?:\/\//i.test(url) && !/^file:\/\//i.test(url) && !/^about:/.test(url)) {
+                    url = 'https://' + url;
+                }
+
+                try {
+                    browserFrame.src = url;
+                } catch (error) {
+                    console.error('Error loading URL:', error);
+                    browserFrame.src = 'about:blank';
+                    alert('Could not load this website');
+                }
+            }
+
+            // Event listeners
+            goButton.addEventListener('click', (e) => {
+                return loadUrl
+            });
+            urlInput.addEventListener('keypress', (e) => e.key === 'Enter' && loadUrl());
+
+            // Navigation buttons
+            document.querySelector('.back-btn')?.addEventListener('click', () => {
+                try {
+                    browserFrame.contentWindow?.history.back();
+                } catch (e) {
+                    console.log("Navigation blocked");
+                }
+            });
+
+            document.querySelector('.forward-btn')?.addEventListener('click', () => {
+                try {
+                    browserFrame.contentWindow?.history.forward();
+                } catch (e) {
+                    console.log("Navigation blocked");
+                }
+            });
+
+            document.querySelector('.refresh-btn')?.addEventListener('click', () => {
+                browserFrame.src = browserFrame.src;
+            });
+
+            // Update URL bar when page loads
+            browserFrame.addEventListener('load', () => {
+                try {
+                    urlInput.value = browserFrame.contentWindow?.location.href || browserFrame.src;
+                } catch (e) {
+                    urlInput.value = browserFrame.src;
+                }
+            });
+        });
+    }
+
+    browserSearchInput();
+
+
     function browserDrag() {
         const browser = document.querySelector(".brave-browser-window");
         const browserTitleBar = document.querySelector(".browser-toolbar");
@@ -235,76 +311,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     browserDrag()
 
-    // function themeToggle() {
-    //     const themeToggle = document.getElementById('themeToggle');
-    //     // const currentTheme = localStorage.getItem('theme') || 'light';
-    //     const themeMenu = document.getElementById('themeMenu');
-    //     const currentTheme = localStorage.getItem('theme') || 'light';
-    //     const themeOptions = document.querySelectorAll('.theme-option');
-    //     // Apply saved theme
-    //     document.documentElement.setAttribute('data-theme', currentTheme);
-
-    //     themeToggle.addEventListener('click', () => {
-    //         const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    //         document.documentElement.setAttribute('data-theme', newTheme);
-    //         localStorage.setItem('theme', newTheme);
-    //     });
 
 
-    //     // Toggle menu visibility
-    //     themeToggle.addEventListener('click', (e) => {
-    //         e.stopPropagation();
-    //         themeMenu.classList.toggle('hidden');
-    //     });
+    function browserClose() {
+        const braveBrowserWindow = document.querySelector(".brave-browser-window")
+        const browserWindowCloseBtn = document.querySelector(".bowser-close-btn")
+        const braveIconDiv = document.querySelector(".brave-icon-div")
+        browserWindowCloseBtn.addEventListener('click', () => {
+            braveBrowserWindow.style.display = "none"
+        })
+        braveIconDiv.addEventListener('click', () => {
+            braveBrowserWindow.style.display = "flex"
+        })
+    }
+    browserClose()
 
-    //     // Close menu when clicking outside
-    //     document.addEventListener('click', () => {
-    //         themeMenu.classList.add('hidden');
-    //     });
 
-    //     // Theme selection
-    //     themeOptions.forEach(option => {
-    //         option.addEventListener('click', () => {
-    //             const theme = option.dataset.theme;
-    //             document.documentElement.setAttribute('data-theme', theme);
-    //             localStorage.setItem('theme', theme);
-    //             themeMenu.classList.add('hidden');
 
-    //             // Update icon based on theme
-    //             const iconPath = theme === 'dark' ? 'icons/sun-icon.svg' : 'icons/moon-icon.svg';
-    //             themeToggle.querySelector('img').src = iconPath;
-    //         });
-    //     });
-
-    //     // Initialize theme
-    //     document.documentElement.setAttribute('data-theme', currentTheme);
-    //     const iconPath = currentTheme === 'dark' ? 'icons/sun-icon.svg' : 'icons/moon-icon.svg';
-    //     themeToggle.querySelector('img').src = iconPath;
-
-    //     // Toggle menu visibility
-    //     themeToggle.addEventListener('click', (e) => {
-    //         e.stopPropagation();
-    //         themeMenu.classList.toggle('hidden');
-    //     });
-
-    //     // Close menu when clicking outside
-    //     document.addEventListener('click', () => {
-    //         themeMenu.classList.add('hidden');
-    //     });
-
-    //     // Theme selection
-    //     themeOptions.forEach(option => {
-    //         option.addEventListener('click', () => {
-    //             const theme = option.dataset.theme;
-    //             document.documentElement.setAttribute('data-theme', theme);
-    //             localStorage.setItem('theme', theme);
-    //             themeMenu.classList.add('hidden');
-    //         });
-    //     });
-
-    //     // Initialize theme
-    //     document.documentElement.setAttribute('data-theme', currentTheme);
-    // }
 
     function themeToggle() {
         const themeToggle = document.getElementById('themeToggle');
@@ -353,6 +376,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     themeToggle();
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
 
