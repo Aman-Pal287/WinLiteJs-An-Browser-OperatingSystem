@@ -23,8 +23,6 @@ function contextMenu() {
 }
 contextMenu()
 
-
-
 function connectivityMenu() {
     const connectivityMenu = document.querySelector(".connectivity-menu")
     const connectivity = document.querySelector(".connectivity")
@@ -45,17 +43,20 @@ function connectivityMenu() {
 connectivityMenu()
 
 
+function thisPc() {
 
-const thisPc = document.querySelector('.this-pc')
-const thisPcCloseBtn = document.querySelector('.title-bar-close-btn')
-const thisPcIcon = document.querySelector('.this-pc-icon')
-thisPcIcon.addEventListener('dblclick', () => {
-    setTimeout(() => {
-        thisPc.style.display = "block"
+    const thisPc = document.querySelector('.this-pc')
+    const thisPcCloseBtn = document.querySelector('.title-bar-close-btn')
+    const thisPcIcon = document.querySelector('.this-pc-icon')
+    thisPcIcon.addEventListener('dblclick', () => {
+        setTimeout(() => {
+            thisPc.style.display = "block"
 
-    }, 100);
-})
+        }, 100);
+    })
 
-thisPcCloseBtn.addEventListener('click', (e) => {
-    thisPc.style.display = "none"
-})
+    thisPcCloseBtn.addEventListener('click', (e) => {
+        thisPc.style.display = "none"
+    })
+}
+thisPc()

@@ -19,6 +19,7 @@ html {
   top: 0;
   left: 0;
   z-index: 100;
+  display: none;
   transition: all 0.5s ease-in-out;
 }
 .this-pc .title-bar {
@@ -82,11 +83,77 @@ html {
   height: 100%;
   width: 15%;
   background-color: rgb(0, 0, 0);
+  pad: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0;
+}
+.this-pc .fileexplorer .fileexplorer-right .fileexplorer-right-folder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px 5px;
+}
+.this-pc .fileexplorer .fileexplorer-right .fileexplorer-right-folder img {
+  width: 30px;
+}
+.this-pc .fileexplorer .fileexplorer-right .fileexplorer-right-folder:hover {
+  background-color: gray;
 }
 .this-pc .fileexplorer .fileexplorer-left {
   height: 100%;
   width: 85%;
   background-color: #1b1a1b;
+  padding: 15px 0 0 20px;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-1 {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  border-top: 1px solid gray;
+  margin-top: 10px;
+  position: relative;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-1 .folder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-1 .folder img {
+  width: 100px;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-1 .folder:hover {
+  background-color: gray;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-2 {
+  position: relative;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  border-top: 1px solid gray;
+  margin-top: 10px;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-2 .folder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-2 .folder img {
+  width: 100px;
+}
+.this-pc .fileexplorer .fileexplorer-left .section-2 .folder:hover {
+  background-color: gray;
 }
 
 .cursor-context-menu {
