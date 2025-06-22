@@ -1,7 +1,36 @@
+:root {
+  /* Light Mode */
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent-color: #0078d7;
+  --border-color: #dddddd;
+  --taskbar-bg: rgba(20, 20, 20, 0.85);
+  --btn-bg: #e0e0e0;
+  --btn-hover: #d0d0d0;
+  --input-bg: #ffffff;
+}
+
+[data-theme=dark] {
+  /* Dark Mode */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #f0f0f0;
+  --text-secondary: #cccccc;
+  --accent-color: #4a9ff5;
+  --border-color: #444444;
+  --taskbar-bg: rgba(10, 10, 10, 0.95);
+  --btn-bg: #333333;
+  --btn-hover: #444444;
+  --input-bg: #2d2d2d;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.2s ease;
 }
 
 body,
@@ -10,6 +39,314 @@ html {
   height: 100%;
   font-family: "Segoe UI", sans-serif;
   overflow: hidden;
+}
+
+.brave-browser-window {
+  position: absolute;
+  z-index: 100;
+  width: 800px;
+  height: 600px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.2s ease;
+}
+.brave-browser-window .browser-toolbar {
+  background: var(--bg-primary);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+.brave-browser-window .browser-controls {
+  display: flex;
+  gap: 4px;
+}
+.brave-browser-window .browser-btn {
+  border: none;
+  background: var(--btn-bg);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.brave-browser-window .browser-btn:hover {
+  background: var(--btn-hover);
+}
+.brave-browser-window .browser-url-bar {
+  flex: 1;
+  display: flex;
+}
+.brave-browser-window .url-input {
+  flex: 1;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+.brave-browser-window .go-btn {
+  border: 1px solid var(--border-color);
+  border-left: none;
+  background: var(--btn-bg);
+  color: var(--text-primary);
+  padding: 0 12px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+.brave-browser-window .browser-content {
+  flex: 1;
+  background: var(--bg-secondary);
+}
+.brave-browser-window .browser-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: var(--bg-secondary);
+}
+
+.calender {
+  position: absolute;
+  display: none;
+  right: 10px;
+  bottom: 50px;
+  z-index: 500;
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* Time and Date Header */
+  /* Calendar Grid */
+  /* Footer */
+}
+.calender .calendar-header {
+  padding: 15px;
+  background-color: #0078d7;
+  color: white;
+  text-align: center;
+}
+.calender .current-time {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+.calender .current-date {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.calender .month-year {
+  font-size: 18px;
+  font-weight: 500;
+}
+.calender .calendar-grid {
+  padding: 15px;
+}
+.calender .weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.calender .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.calender .day {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.calender .day:hover {
+  background-color: #e6f2ff;
+}
+.calender .current-day {
+  background-color: #0078d7;
+  color: white;
+  font-weight: 600;
+}
+.calender .other-month {
+  color: #aaa;
+}
+.calender .calendar-footer {
+  padding: 10px 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calender .show-agenda {
+  color: #0078d7;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.calender .show-agenda:hover {
+  text-decoration: underline;
+}
+.calender .memo {
+  font-size: 12px;
+  color: #666;
+}
+
+.window-start-menu {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 100;
+  width: 600px;
+  max-width: 90%;
+  height: 700px;
+  max-height: 80vh;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  /* Search Bar */
+  /* Main Content Area */
+  /* Pinned Apps Section */
+  /* Recommended Section */
+  /* User Section */
+}
+.window-start-menu .search-bar {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.window-start-menu .search-bar input {
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+}
+.window-start-menu .search-bar input:focus {
+  outline: none;
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.5);
+}
+.window-start-menu .menu-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+.window-start-menu .pinned-apps {
+  flex: 3;
+  padding: 15px;
+  overflow-y: auto;
+}
+.window-start-menu .section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.window-start-menu .app-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+@media (max-width: 768px) {
+  .window-start-menu .app-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .window-start-menu .app-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.window-start-menu .app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.window-start-menu .app-icon:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.window-start-menu .app-icon img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+.window-start-menu .app-icon span {
+  font-size: 12px;
+  text-align: center;
+  color: #333;
+}
+.window-start-menu .recommended {
+  flex: 2;
+  padding: 15px;
+  background-color: white;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+}
+.window-start-menu .recommended-item {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.window-start-menu .recommended-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.window-start-menu .recommended-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.window-start-menu .recommended-subtitle {
+  font-size: 12px;
+  color: #666;
+}
+.window-start-menu .user-section {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+.window-start-menu .user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #0078d4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.window-start-menu .user-name {
+  font-weight: 600;
 }
 
 .this-pc {
@@ -178,7 +515,7 @@ html {
   background-color: rgb(0, 0, 0);
   width: 300px;
   height: 400px;
-  z-index: 100;
+  z-index: 1000;
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -227,9 +564,9 @@ html {
   width: 80px;
   height: 60px;
 }
-
-.refresh-animation {
-  display: none;
+.connectivity-menu .network-menu .settings .network-menu-setting:hover {
+  background-color: rgb(74, 74, 145);
+  cursor: pointer;
 }
 
 .desktop {
@@ -278,6 +615,7 @@ html {
   align-items: center;
   justify-content: center;
   padding: 0 10px;
+  z-index: 500;
 }
 .taskbar .window-start-action {
   display: flex;
