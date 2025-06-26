@@ -24,8 +24,52 @@
   </head>
   <body>
     <main class="desktop">
+      <section class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-title">
+            <i class="fas fa-terminal"></i>
+            <span>WinLite Terminal</span>
+          </div>
+          <div class="terminal-controls">
+            <button class="control-btn minimize">
+              <i class="fas fa-window-minimize"></i>
+            </button>
+            <button class="control-btn maximize">
+              <i class="fas fa-window-maximize"></i>
+            </button>
+            <button class="control-btn close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-output" id="terminal-output">
+            <div class="terminal-line">
+              <span class="prompt">user@winlite:~$</span>
+              <span class="welcome-message"
+                >Welcome to WinLite Terminal (v1.0.0)</span
+              >
+            </div>
+            <div class="terminal-line">
+              <span class="prompt">user@winlite:~$</span>
+              <span class="welcome-message"
+                >Type 'help' for available commands</span
+              >
+            </div>
+          </div>
+          <div class="terminal-input-line">
+            <span class="prompt">user@winlite:~$</span>
+            <input
+              type="text"
+              class="terminal-input"
+              id="terminal-input"
+              autofocus
+              spellcheck="false"
+            />
+          </div>
+        </div>
+      </section>
 
-      
       <section class="rich-text-editor-window">
         <div class="editor-toolbar">
           <div class="editor-controls">
@@ -622,8 +666,19 @@
         </div>
 
         <div class="icon desktop-icon notepad-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/281/281760.png" alt="notepad" />
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/281/281760.png"
+            alt="notepad"
+          />
           <span class="desktop-icon-title">Notepad</span>
+        </div>
+
+        <div class="icon desktop-icon terminal-icon">
+          <img
+            src="./assets/icons/terminal.png"
+            alt="notepad"
+          />
+          <span class="desktop-icon-title">Terminal</span>
         </div>
       </section>
 
