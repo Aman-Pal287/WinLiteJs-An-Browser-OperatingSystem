@@ -24,6 +24,54 @@
   </head>
   <body>
     <main class="desktop">
+
+      
+      <section class="rich-text-editor-window">
+        <div class="editor-toolbar">
+          <div class="editor-controls">
+            <button class="editor-btn format-btn" data-command="bold">
+              <i class="fas fa-bold"></i>
+            </button>
+            <button class="editor-btn format-btn" data-command="italic">
+              <i class="fas fa-italic"></i>
+            </button>
+            <button class="editor-btn format-btn" data-command="underline">
+              <i class="fas fa-underline"></i>
+            </button>
+            <select class="editor-dropdown" id="font-select">
+              <option value="Arial">Arial</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Courier New">Courier New</option>
+              <option value="Georgia">Georgia</option>
+            </select>
+            <select class="editor-dropdown" id="size-select">
+              <option value="1">Small</option>
+              <option value="3" selected>Normal</option>
+              <option value="5">Large</option>
+              <option value="7">Huge</option>
+            </select>
+          </div>
+          <div class="window-controls">
+            <button class="editor-btn window-btn" id="minimize-btn">
+              <i class="fas fa-window-minimize"></i>
+            </button>
+            <button class="editor-btn window-btn" id="fullscreen-btn">
+              <i class="fas fa-expand"></i>
+            </button>
+            <button class="editor-btn window-btn" id="close-btn">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="editor-content" id="editor" contenteditable="true">
+          Start typing here...
+        </div>
+        <div class="editor-statusbar">
+          <span class="status-text">Ready</span>
+          <span class="word-count">Words: 0</span>
+        </div>
+      </section>
+
       <section class="brave-browser-window">
         <div class="bowser-close flex justify-between">
           <h1>Brave browser</h1>
@@ -493,6 +541,26 @@
           </div>
         </div>
 
+        <div
+          class="brightness-control px-4 py-3 border-t border-gray-200 dark:border-gray-700"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center">
+              <i class="ri-sun-line mr-2"></i>
+              <span>Brightness</span>
+            </div>
+            <span id="brightnessValue">100%</span>
+          </div>
+          <input
+            type="range"
+            id="brightnessSlider"
+            min="20"
+            max="100"
+            value="100"
+            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+          />
+        </div>
+
         <div class="network-menu">
           <h1>Network & Internet setting</h1>
           <p>Change settings, such as making a connection metered</p>
@@ -544,18 +612,18 @@
 
       <!-- Desktop Icons -->
       <section class="desktop-all-icon">
-        <div class="icon this-pc-icon">
+        <div class="icon this-pc-icon desktop-icon">
           <img src="assets/icons/this-pc.png" />
-          <span>This PC</span>
+          <span class="desktop-icon-title">This PC</span>
         </div>
-        <div class="icon">
+        <div class="icon desktop-icon">
           <img src="assets/icons/notes.svg" alt="Notion" />
-          <span>Notion</span>
+          <span class="desktop-icon-title">Notion</span>
         </div>
 
-        <div class="icon">
-          <img src="assets/icons/terminal.png" alt="terminal" />
-          <span>terminal</span>
+        <div class="icon desktop-icon notepad-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/281/281760.png" alt="notepad" />
+          <span class="desktop-icon-title">Notepad</span>
         </div>
       </section>
 

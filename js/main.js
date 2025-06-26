@@ -38,6 +38,29 @@ function connectivityMenu() {
             isMenuOpen = false;
         }
     });
+
+
+
+    // Brightness control functionality
+    const brightnessSlider = document.getElementById('brightnessSlider');
+    const brightnessValue = document.getElementById('brightnessValue');
+
+    brightnessSlider.addEventListener('input', () => {
+        const brightness = brightnessSlider.value;
+        brightnessValue.textContent = `${brightness}%`;
+
+        // Apply brightness to the whole OS UI (simulated)
+        document.documentElement.style.filter = `brightness(${brightness}%)`;
+
+        // Save to localStorage
+        localStorage.setItem('brightness', brightness);
+    });
+
+    // Initialize brightness from saved value
+    const savedBrightness = localStorage.getItem('brightness') || 100;
+    brightnessSlider.value = savedBrightness;
+    brightnessValue.textContent = `${savedBrightness}%`;
+    document.documentElement.style.filter = `brightness(${savedBrightness}%)`;
 }
 connectivityMenu()
 
@@ -283,7 +306,6 @@ function browserDrag() {
 browserDrag()
 
 
-
 function browserClose() {
     const braveBrowserWindow = document.querySelector(".brave-browser-window")
     const browserWindowCloseBtn = document.querySelector(".bowser-close-btn")
@@ -296,9 +318,6 @@ function browserClose() {
     })
 }
 browserClose()
-
-
-
 
 function themeToggle() {
     const themeToggle = document.getElementById('themeToggle');
@@ -345,8 +364,136 @@ function themeToggle() {
         }
     }
 }
-
 themeToggle();
+
+
+
+function textEditor() {
+
+    // --------- Editor Basic Formatting Controls ---------
+    const editor = document.getElementById("editor");
+    const formatButtons = document.querySelectorAll(".format-btn");
+    const fontSelect = document.getElementById("font-select");
+    const sizeSelect = document.getElementById("size-select");
+    const wordCount = document.querySelector(".word-count");
+
+    // Execute formatting command
+    formatButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const command = btn.getAttribute("data-command");
+            document.execCommand(command, false, null);
+            btn.classList.toggle("active");
+            updateWordCount();
+        });
+    });
+
+    // Font change
+    fontSelect.addEventListener("change", () => {
+        document.execCommand("fontName", false, fontSelect.value);
+    });
+
+    // Font size change
+    sizeSelect.addEventListener("change", () => {
+        document.execCommand("fontSize", false, sizeSelect.value);
+    });
+
+    // --------- Word Count ---------
+    function updateWordCount() {
+        const text = editor.innerText.trim();
+        const words = text === "" ? 0 : text.split(/\s+/).length;
+        wordCount.textContent = `Words: ${words}`;
+    }
+
+    editor.addEventListener("input", updateWordCount);
+
+    // --------- Window Controls ---------
+    const editorWindow = document.querySelector(".rich-text-editor-window");
+    const minimizeBtn = document.getElementById("minimize-btn");
+    const fullscreenBtn = document.getElementById("fullscreen-btn");
+    const closeBtn = document.getElementById("close-btn");
+
+
+
+    const notePadIcon = document.querySelector(".notepad-icon")
+    notePadIcon.addEventListener('dblclick', () => {
+        console.log("helo");
+        
+        editorWindow.style.display = 'flex'
+    })
+
+
+
+
+    // Minimize (just hide content & statusbar for demo)
+    minimizeBtn.addEventListener("click", () => {
+        const content = editorWindow.querySelector(".editor-content");
+        const status = editorWindow.querySelector(".editor-statusbar");
+        const isMinimized = content.style.display === "none";
+        content.style.display = isMinimized ? "block" : "none";
+        status.style.display = isMinimized ? "flex" : "none";
+    });
+
+    // Fullscreen Toggle Button
+    fullscreenBtn.addEventListener("click", () => {
+        console.log("so;jidgh");
+
+        editorWindow.classList.toggle("fullscreen");
+    });
+
+    // Close Button
+    closeBtn.addEventListener("click", () => {
+        editorWindow.style.display = "none";
+    });
+
+    // --------- Double Click to Toggle Fullscreen on Toolbar ---------
+    const toolbar = editorWindow.querySelector(".editor-toolbar");
+
+    toolbar.addEventListener("dblclick", () => {
+        console.log("sdiulg");
+
+        editorWindow.classList.toggle("fullscreen");
+    });
+
+    function dragWindow(toolbar) {
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        // Start dragging
+        toolbar.addEventListener("mousedown", (e) => {
+            if (editorWindow.classList.contains("fullscreen")) return; // No drag in fullscreen
+
+            isDragging = true;
+            const rect = editorWindow.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+
+            editorWindow.style.transition = "none"; // remove smoothness while dragging
+        });
+
+        // Move window
+        document.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+
+            const x = e.clientX - offsetX;
+            const y = e.clientY - offsetY;
+
+            editorWindow.style.left = `${x}px`;
+            editorWindow.style.top = `${y}px`;
+        });
+
+        // Stop dragging
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+            editorWindow.style.transition = ""; // restore transition
+        });
+
+    }
+    dragWindow(toolbar)
+}
+textEditor()
+
+
 
 
 
