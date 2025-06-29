@@ -856,7 +856,20 @@ terminalWindow();
 
 
 
+window.addEventListener("load", () => {
+    const bootSound = document.getElementById("bootSound");
+    const bootScreen = document.getElementById("bootScreen");
 
+    // Wait a bit then play sound
+    setTimeout(() => {
+        bootSound.play();
+    }, 1000); // delay before playing sound
+
+    // Remove boot screen after full animation
+    setTimeout(() => {
+        bootScreen.style.display = "none";
+    }, 4000); // match the fadeOut delay
+});
 
 
 

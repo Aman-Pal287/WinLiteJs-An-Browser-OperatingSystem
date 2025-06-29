@@ -41,6 +41,50 @@ html {
   overflow: hidden;
 }
 
+.boot-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 99999;
+  animation: fadeOut 2s ease forwards;
+  animation-delay: 3.5s;
+}
+.boot-screen .boot-content {
+  text-align: center;
+  color: white;
+}
+.boot-screen .boot-logo {
+  width: 150px;
+  animation: glow 2s infinite ease-in-out alternate;
+}
+.boot-screen .boot-text {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  opacity: 0.7;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 0px white);
+  }
+  to {
+    filter: drop-shadow(0 0 15px white);
+  }
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
 .terminal-window {
   width: 600px;
   height: 400px;
@@ -966,7 +1010,6 @@ html {
 .desktop {
   width: 100vw;
   height: 100vh;
-  background-image: url("../assets/wallpaper/wallpaper.webp");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1050,4 +1093,12 @@ html {
   border-radius: 20px;
   display: flex;
   gap: 5px;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: -1;
 }/*# sourceMappingURL=style.css.map */

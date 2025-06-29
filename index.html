@@ -24,6 +24,19 @@
   </head>
   <body>
     <main class="desktop">
+      <div class="boot-screen" id="bootScreen">
+        <div class="boot-content">
+          <img
+            src="assets/icons/virus_11762342.png"
+            alt="Windows Logo"
+            class="boot-logo"
+          />
+          <p class="boot-text">Starting WinLiteJS...</p>
+        </div>
+      </div>
+
+      <div id="particles-js"></div>
+
       <section class="terminal-window">
         <div class="terminal-header">
           <div class="terminal-title">
@@ -543,6 +556,9 @@
               <div class="folder">
                 <img src="assets/file_explorer/disk.png" alt="" />
                 <p>Local Disk (C:)</p>
+                <div class="storage-bar">
+                  <div class="storage-fill" style="width: 60%"></div>
+                </div>
               </div>
               <div class="folder">
                 <img src="assets/file_explorer/download.png" alt="" />
@@ -674,10 +690,7 @@
         </div>
 
         <div class="icon desktop-icon terminal-icon">
-          <img
-            src="./assets/icons/terminal.png"
-            alt="notepad"
-          />
+          <img src="./assets/icons/terminal.png" alt="notepad" />
           <span class="desktop-icon-title">Terminal</span>
         </div>
       </section>
@@ -728,7 +741,8 @@
         </div>
       </section>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/3dBackground.js"></script>
     <script
       async
       src="https://cse.google.com/cse.js?cx=22d5ba747b5234c4c"
